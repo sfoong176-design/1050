@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클린배관 케어 - 하수구 작업 갤러리</title>
+    <style>
+        /* --- 기본 스타일 (CSS) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* 갤러리 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* 카드 스타일 */
+        .work-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .img-wrapper {
+            width: 100%;
+            height: 220px;
+            background-color: #e9ecef;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.2rem;
+        }
+
+        .card-badge {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #0d47a1;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            color: #212529;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        /* 라이트박스 모달 모듈 (사진 크게 보기) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            max-width: 800px;
+            max-height: 80vh;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>현장 작업 갤러리</h1>
+        <p>막힌 하수구 뚫음, 고압 세척, 내시경 탐지 시공 사례입니다.</p>
+    </header>
+
+    <div class="container">
+        <div class="gallery-grid">
+            
+            <div class="work-card" onclick="openModal(this)">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=500" alt="하수구 고압세척">
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">고압 세척</span>
+                    <h3 class="card-title">역삼동 상가 빌딩 메인 배관 세척</h3>
+                    <p class="card-desc">유지방 덩어리로 꽉 막힌 지하 횡주관을 고압 세척 장비를 이용해 스케일링 완료했습니다.</p>
+                </div>
+            </div>
+
+            <div class="work-card" onclick="openModal(this)">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1542013936693-8848e57423e3?w=500" alt="배관 내시경 탐지">
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">내시경 탐지</span>
+                    <h3 class="card-title">신림동 아파트 배관 내부 정밀 진단</h3>
+                    <p class="card-desc">원인 모를 자주 발생하는 막힘 문제를 해결하기 위해 첨단 내시경 카메라로 처짐 구간을 찾아냈습니다.</p>
+                </div>
+            </div>
+
+            <div class="work-card" onclick="openModal(this)">
+                <div class="img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500" alt="싱크대 배수구 교체">
+                </div>
+                <div class="card-content">
+                    <span class="card-badge">부속 교체</span>
+                    <h3 class="card-title">가정집 싱크대 홈통 및 호스 전면 교체</h3>
+                    <p class="card-desc">오래되어 악취가 올라오는 노후 씽크대 호스를 철거하고 S트랩을 포함한 새 제품으로 교체했습니다.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        // 모달 열기 함수
+        function openModal(cardElement) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImg");
+            
+            // 클릭한 카드의 이미지 주소(src)를 가져와 모달 이미지에 대입
+            const clickedImgSrc = cardElement.querySelector(".img-wrapper img").src;
+            
+            modal.style.display = "flex";
+            modalImg.src = clickedImgSrc;
+        }
+
+        // 모달 닫기 함수
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+
+        // ESC 키 누르면 모달 닫히는 기능 추가
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
